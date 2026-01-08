@@ -1,9 +1,13 @@
 const express = require("express");
 
+const { authAdmin } = require("./middlewere/auth");
+
 const app = express();
 
-app.use("/test",(req,res) =>{
-    res.send("Hello from the server")
+app.use("/admin", authAdmin)
+
+app.get("/admin/getAllDetails", (req, res) => {
+    res.send('you have all data')
 })
 
 app.listen(3000, () => {
